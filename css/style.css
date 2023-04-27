@@ -42,14 +42,15 @@ main {
     background-color: #7FFFD4;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
 #bottone {
     margin: 10px;
 }
 
-.alarm {
-    background-color: yellowgreen;
+
+.hidden {
+    visibility: hidden;
+}
+
+.alarm{
+    background-color: red;
 }

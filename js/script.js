@@ -23,7 +23,7 @@ bottone.addEventListener("click", function () {
             let risultatoRandom = Math.floor(Math.random() * (max - min + 1) + min);
 
             if (!arrayRandom.includes(risultatoRandom)) {
-            arrayRandom.push(risultatoRandom);
+                arrayRandom.push(risultatoRandom);
             }
 
         }
@@ -34,26 +34,40 @@ bottone.addEventListener("click", function () {
     console.log(numeroBombe);
 
     // associare bombe(n) a numero in tabella
-    
+
     // scorrere array casuale
 
-    for(let i = 0; i < numeroBombe.length; i++) {
-        let numeroCasuale = numeroBombe[i];
+    // for (let i = 0; i < numeroBombe.length; i++) {
+        // let numeroCasuale = numeroBombe;
 
-    // cella corrispondente
+        // cella corrispondente
+        
+        // elemento span con classe "numero" uguale a numero casuale
+        
+        //se la cella contiene bomba colora di rosso
+        
+        
+        griglia.addEventListener("click", function (event) {
+            // event.target assegna alla variabile il valore dell'evento
+            let cellaCliccata = event.target;
+            console.log('cellacliccata', cellaCliccata)
+            // assegna alla variabile il contenuto della cella
+            let numeroCasuale = cellaCliccata.textContent;
+            console.log('numerocasuale', numeroCasuale)
+            // se numeroBombe include il contenuto cliccato, aggiungi o rimuovi le classi
+            if (numeroBombe.includes(parseInt(numeroCasuale))) {
+                console.log("hai perso");
+                    cellaCliccata.classList.add("alarm");
+                    cellaCliccata.classList.remove("clicked");
+                } 
+        
+        
+    });
+}
 
-    // elemento span con classe "numero" uguale a numero casuale
-    let cella = document.querySelector(`span[numero="${numeroCasuale}"]`);
+);
 
-    //se la cella contiene bomba colora di rosso
 
-    if (cella) {
-        cella.classList.add("alarm");
-        console.log(cella);
-    }
-    }
-
-});
 
 
 function creaGriglia(numeroCelle) {
@@ -88,6 +102,7 @@ function creaGriglia(numeroCelle) {
 
     }
 };
+
 
 
 
