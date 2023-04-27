@@ -49,3 +49,7 @@ main {
 #bottone {
     margin: 10px;
 }
+
+.alarm {
+    background-color: yellowgreen;
+}
