@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #011627;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#grid {
+    margin-left: 20px;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px white solid;
+}
+
+#grid .square {
+    cursor: crosshair;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: green;
+}
+
+#grid .square {
+    border: 2px white solid;
+}
+
+#grid .square.clicked {
+    background-color: #7FFFD4;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#bottone {
+    margin: 10px;
+}
