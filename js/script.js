@@ -1,8 +1,18 @@
 let bottone = document.getElementById("bottone");
 const griglia = document.getElementById("grid");
 griglia.classList.add("hidden"); // griglia invisibile di default
+// costanti per messaggio e punteggio
+const messaggio = document.createElement("p");
+const punteggio = document.createElement("p");
+document.body.appendChild(messaggio);
+document.body.appendChild(punteggio);
+
 
 bottone.addEventListener("click", function () {
+
+    // stinghe vuote al click
+    messaggio.innerHTML= "";
+    punteggio.innerHTML= "";
 
     griglia.innerHTML = ""; // rimuove elementi
 
@@ -33,42 +43,35 @@ bottone.addEventListener("click", function () {
     let numeroBombe = creaNumeroRandom(1, 100);
     console.log(numeroBombe);
 
-    // associare bombe(n) a numero in tabella
+    let conteggio = 0;
 
-    // scorrere array casuale
+    griglia.addEventListener("click", function (event) {
 
-    // for (let i = 0; i < numeroBombe.length; i++) {
-        // let numeroCasuale = numeroBombe;
+        // event.target assegna alla variabile il valore dell'evento
+        let cellaCliccata = event.target;
+        console.log('cellacliccata', cellaCliccata)
+        // assegna alla variabile il contenuto della cella
+        let numeroCasuale = cellaCliccata.innerText;
+        console.log('numerocasuale', numeroCasuale)
+        // se numeroBombe include il contenuto cliccato, aggiungi o rimuovi le classi
+        if (numeroBombe.includes(parseInt(numeroCasuale))) {
+            console.log("hai perso");
 
-        // cella corrispondente
-        
-        // elemento span con classe "numero" uguale a numero casuale
-        
-        //se la cella contiene bomba colora di rosso
-        
-        
-        griglia.addEventListener("click", function (event) {
-            // event.target assegna alla variabile il valore dell'evento
-            let cellaCliccata = event.target;
-            console.log('cellacliccata', cellaCliccata)
-            // assegna alla variabile il contenuto della cella
-            let numeroCasuale = cellaCliccata.textContent;
-            console.log('numerocasuale', numeroCasuale)
-            // se numeroBombe include il contenuto cliccato, aggiungi o rimuovi le classi
-            if (numeroBombe.includes(parseInt(numeroCasuale))) {
-                console.log("hai perso");
-                    cellaCliccata.classList.add("alarm");
-                    cellaCliccata.classList.remove("clicked");
-                } 
-        
-        
+            messaggio.innerText = "hai perso!";
+            messaggio.style.textAlign = "center";
+
+            punteggio.innerText = `il tuo punteggio è ${conteggio}`;
+            punteggio.style.textAlign = "center";
+            
+            cellaCliccata.classList.add("alarm");
+            cellaCliccata.classList.remove("clicked");
+        } else {
+            conteggio++;
+        }
     });
 }
 
 );
-
-
-
 
 function creaGriglia(numeroCelle) {
     for (let i = 1; i <= numeroCelle; i++) {
@@ -110,6 +113,5 @@ function creaGriglia(numeroCelle) {
 
 
 
-// termina partita quando il giocatore clicca su una bomba o se finisce le celle vuote, comunicare punteggio
 
 
